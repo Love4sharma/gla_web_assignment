@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+</head>
+<body>
+      <div>
+
+            <form action="/university/<%=funiversity._id%>?_method=PATCH" method="POST">
+    
+                <!-- <div >
+                    <label for="universityName">Name: </label>
+                    <input type="text"  name="universityName" id="universityName" placeholder="dont change" value="<%=funiversity.universityName%>" required>
+                </div> -->
+    
+                <div >
+                    <label for="imageUrl">Image: </label>
+                    <input type="text" class="form-control" name="imageUrl" id="imageUrl" placeholder="Image URL" value="<%=funiversity.imageUrl%>" required>
+
+                </div>
+
+                <div >
+                  <label for="affiliateBy">affiliatedby: </label>
+                  <input type="text"  name="affiliateBy" id="affiliateBy"  value="<%=funiversity.affiliateBy%>" required>
+
+              </div>
+            
+              <div >
+                  <label for="location">location: </label>
+                  <input type="text"  name="location" id="location"  value="<%=funiversity.location%>" required>
+
+              </div>
+
+              <div >
+                  <label for="numberOfCourses">numberOfCourses: </label>
+                  <input type="text"  name="numberOfCourses" id="numberOfCourses"  value="<%=funiversity.numberOfCourses%>" required>
+
+              </div>
+
+              <button>edit</button>
+            </form>
+</body>
+</html>

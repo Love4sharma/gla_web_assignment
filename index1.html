@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Note Maker</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+      }
+      .note-box {
+        display: inline-block;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        background-color: #f9f9f9;
+        width: 200px;
+        height: 200px;
+        position: relative;
+      }
+      .note-box button {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="add-note-btn">+</button>
+
+    <script>
+      const addNoteBtn = document.getElementById("add-note-btn");
+
+      addNoteBtn.addEventListener("click", () => {
+        const noteBox = document.createElement("div");
+        noteBox.classList.add("note-box");
+
+        const textarea = document.createElement("textarea");
+        textarea.style.width = "100%";
+        textarea.style.height = "100%";
+        noteBox.appendChild(textarea);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete";
+        deleteBtn.addEventListener("click", () => {
+          noteBox.remove();
+        });
+        noteBox.appendChild(deleteBtn);
+
+        document.body.appendChild(noteBox);
+      });
+    </script>
+  </body>
+</html>

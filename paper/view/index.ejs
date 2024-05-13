@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main">
+      <% for(let item of students){ %>
+      <div class="card">
+        <img
+          src="<%=item.imageUrl%>"
+          alt="network issue"
+          class="universityimage"
+        />
+        <p><%=item.universityName%></p>
+        <p><%=item.affiliateBy%></p>
+        <p><%=item.location%></p>
+        <p><%=item.numberOfCourses%></p>
+        <a href="/university/<%=item._id%>" class="btn btn-info"
+          >show university</a
+        >
+        <form action="/university/<%=item._id%>?_method=DELETE" method="POST">
+          <button>Delete</button>
+        </form>
+        <a href="/university/<%=item._id%>/edit">edit</a>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>

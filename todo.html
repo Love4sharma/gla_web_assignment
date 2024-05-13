@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .heading {
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        margin: 10px 0;
+        padding: 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      button {
+        padding: 10px;
+        margin: 10px;
+        cursor: pointer;
+      }
+
+      .span {
+        background-color: yellow;
+        padding: 5px;
+        margin: 0 10px;
+      }
+
+      .delete {
+        background-color: red;
+      }
+
+      .btnc {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+      }
+
+      .totalcount {
+        font-weight: bold;
+      }
+    </style>
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1 class="heading">To-Do List</h1>
+    <div class="totalcount heading">
+      Total Items: <span id="totalCount">0</span>
+    </div>
+
+    <div>
+      <button onclick="reset()">Reset</button>
+      <button onclick="addTodo()">Add Todo</button>
+    </div>
+
+    <ul id="todoList"></ul>
+
+    <script>
+      let count = 0;
+      let totalcnt = 0;
+
+      function updateTotalCount() {
+        const totalCountSpan = document.getElementById("totalCount");
+        totalCountSpan.innerText = totalcnt;
+      }
+
+      function addTodo() {
+        count++;
+        const todoList = document.getElementById("todoList");
+
+        const li = document.createElement("li");
+        li.innerHTML = `
+            <span class="span">${"zero"}</span>
+            <button class='btnc' onclick="increaseCount(this)">+</button>
+            <button class='btnc' onclick="decreaseCount(this)">-</button>
+            <button class='delete btnc' onclick="removeTodo(this)">X</button>
+        `;
+
+        todoList.appendChild(li);
+      }
+
+      function removeTodo(button) {
+        const li = button.parentElement;
+        li.remove();
+        count--;
+        updateTotalCount();
+      }
+
+      function increaseCount(button) {
+        const li = button.parentElement;
+        const span = li.querySelector(".span");
+        if (span.innerText === "zero") {
+          span.innerText = 1;
+          totalcnt++;
+        } else {
+          const currentCount = parseInt(span.innerText);
+          span.innerText = currentCount + 1;
+          totalcnt++;
+        }
+        updateTotalCount();
+      }
+
+      function decreaseCount(button) {
+        const li = button.parentElement;
+        const span = li.querySelector(".span");
+        const currentCount = parseInt(span.innerText);
+        if (currentCount > 0) {
+          span.innerText = currentCount - 1;
+          totalcnt--;
+          updateTotalCount();
+        }
+      }
+
+      function reset() {
+        count = 0;
+        totalcnt = 0;
+        const todoList = document.getElementById("todoList");
+        todoList.innerHTML = "";
+        updateTotalCount();
+      }
+    </script>
+  </body>
+</html>
